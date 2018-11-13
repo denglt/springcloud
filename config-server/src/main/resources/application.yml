@@ -1,0 +1,20 @@
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/denglt/springcloud
+          #uri: file:///Users/denglt/onGithub/spring-cloud-config-repo
+          searchPaths: config-repo
+          username: ltdeng@hotmail.com
+          password: 
+          hostKeyAlgorithm:
+          host-key:
+      username: admin
+      password: 123456
+  application:
+    name: config-server
+
+server:
+  port: 8888

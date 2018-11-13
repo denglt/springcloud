@@ -1,0 +1,130 @@
+# Server HTTP port.
+server:
+  servlet:
+    context-path: /springboot
+    session:
+      timeout:
+  port: 8080
+  address:
+  connection-timeout: 10s
+
+application.name: myDemo
+
+# 复杂对象 必须使用 ConfigurationProperties
+city:
+    - 北京
+    - 上海
+    - 深圳
+    - 南京
+    - 重庆
+
+acme:
+  list:
+    - name: my name
+      description: my description
+    - name: another name
+      description: another description
+
+  map:
+    key1:
+      name: my name 1
+      description: my description 1
+
+logging:
+  file: /log/springBootDemo.log
+  level:
+    root: info
+
+spring:
+  security:
+    user:
+      name: admin
+      password: 123456
+  jta:
+    enabled: false
+    atomikos:
+      properties:
+        enable-logging: true
+  datasource:
+    url: jdbc:mysql://localhost/med2
+    jdbc-url: jdbc:mysql://localhost/med2
+    password: denglt
+    driver-class-name: "com.mysql.jdbc.Driver"
+    username: root
+    type: com.zaxxer.hikari.HikariDataSource
+    maximum-pool-size: 30
+  jdbc:
+    template:
+      max-rows: -1
+  data:
+    elasticsearch:
+       cluster-nodes: 47.106.93.69:9300
+      # properties: { es.set.netty.runtime.available.processors: false }
+
+ #CacheProperties
+  cache:
+    type: simple
+    #type: redis
+    redis:
+      key-prefix: denglt
+
+  task:
+    execution:
+      pool:
+        core-pool-size: 1
+        max-pool-size: 10
+        queue-capacity: 100
+        keep-alive-seconds: 60
+
+    scheduler:
+      pool:
+        pool-size: 5
+        thread-name-prefix: my-scheduled-pool
+  session:
+    store-type: none
+
+org:
+  springframework:
+    boot:
+      autoconfigure:
+        security: INFO
+
+# Actuator 监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#             - info
+#             - info
+#             - health
+#             - metrics
+#             - httptrace
+#             - beans
+#             - env
+#             - mappings
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+#  server:
+#    port: 9080
+
+
+#/info Endpoint
+info:
+  app:
+    name: Spring Sample Application
+    description: denglt study for prod
+    version: 1.0.0
+  extend: false
+
+
+######## end Actuator
+
+---
+spring:
+  profiles: dev
+acme:
+  list:
+    - name: my another name

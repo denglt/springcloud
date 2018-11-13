@@ -14,7 +14,6 @@ import com.netflix.discovery.EurekaClientConfig;
 /**
  * Sample Eureka service that registers with Eureka to receive and process requests.
  * This example just receives one request and exits once it receives the request after processing it.
- *
  */
 public class ExampleEurekaService2 {
 
@@ -40,7 +39,8 @@ public class ExampleEurekaService2 {
 
 
     /**
-     *  -Deureka.client.props=eureka-service2
+     * -Deureka.client.props=eureka-service2
+     *
      * @param args
      */
     public static void main(String[] args) {

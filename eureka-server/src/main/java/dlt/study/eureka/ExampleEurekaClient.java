@@ -104,7 +104,7 @@ public class ExampleEurekaClient {
             System.out.println(i.getAppName() + "," + i.getHomePageUrl() + "," + i.getPort() + "," + i.getId());
         });
 
-       // eurekaClient.getInstancesByVipAddressAndAppName()
+        // eurekaClient.getInstancesByVipAddressAndAppName()
     }
 
     public static void main(String[] args) {
