@@ -4,7 +4,7 @@ server:
     context-path: /demoserver
     session:
       timeout:
-  port: 8880
+  port: 8881
   address:
   connection-timeout: 10s
 
