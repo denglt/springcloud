@@ -1,0 +1,48 @@
+# Server HTTP port.
+server:
+  servlet:
+    context-path: /demoserver
+    session:
+      timeout:
+  port: 8880
+  address:
+  connection-timeout: 10s
+
+spring:
+  security:
+    user:
+      name: admin
+      password: demoserver
+  data:
+    elasticsearch:
+      cluster-nodes: 47.106.93.69:9300
+      # properties: { es.set.netty.runtime.available.processors: false }
+  task:
+    execution:
+      pool:
+        core-pool-size: 1
+        max-pool-size: 10
+        queue-capacity: 100
+        keep-alive-seconds: 60
+    scheduler:
+      pool:
+        pool-size: 5
+        thread-name-prefix: my-scheduled-pool
+
+# Actuator 监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+
+#/info Endpoint
+info:
+  app:
+    name: Demo Server
+    description: prod
+    version: 1.0.0
