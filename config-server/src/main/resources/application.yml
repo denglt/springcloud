@@ -7,8 +7,8 @@ spring:
           uri: https://github.com/denglt/springcloud
           #uri: file:///Users/denglt/onGithub/spring-cloud-config-repo
           searchPaths: config-repo
-         # username:
-         # password:
+          username:
+          password:
           hostKeyAlgorithm:
           host-key:
           private-key:
