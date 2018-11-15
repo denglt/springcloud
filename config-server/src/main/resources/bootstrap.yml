@@ -4,10 +4,11 @@ spring:
   cloud:
     config:
       server:
+        # configserver configure itself from its own remote repository
         bootstrap: true
         git:
-          uri: file:///Users/denglt/onGithub/springcloud
+          //uri: file:///Users/denglt/onGithub/springcloud
+          uri: https://github.com/denglt/springcloud
           username:
           password:
           searchPaths: config-repo
-      profile: default

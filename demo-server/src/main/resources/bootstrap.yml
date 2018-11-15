@@ -8,4 +8,7 @@ spring:
       password: admin
       profile: dev,prod
       fail-fast: true
+      retry:
+        initial-interval: 1000
+      label: master
 
