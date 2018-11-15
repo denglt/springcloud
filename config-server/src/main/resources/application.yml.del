@@ -1,0 +1,37 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: configserver
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: ADMIN
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/denglt/springcloud
+          #uri: file:///Users/denglt/onGithub/spring-cloud-config-repo
+          searchPaths: config-repo
+          username:
+          password:
+          hostKeyAlgorithm:
+          host-key:
+          private-key:
+        overrides:
+          foo: bar
+        health:
+          enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    health:
+      show-details: always
+

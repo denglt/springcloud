@@ -5,8 +5,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
+/**
+ * org.springframework.cloud.config.client.ConfigServiceBootstrapConfiguration
+ *
+ */
 @ComponentScan("dlt.study.springcloud")
-@EnableAutoConfiguration
+@EnableAutoConfiguration  // ConfigClientAutoConfiguration
 @SpringBootApplication
 public class DemoServerApplication {
 
