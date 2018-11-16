@@ -31,9 +31,6 @@ spring:
 
 # Actuator 监控
 management:
-  server:
-    servlet:
-      context-path: /admin
   endpoints:
     web:
       exposure:
@@ -54,8 +51,8 @@ eureka:
   instance:
     hostname: 127.0.0.1
     port: 8761
-    status-page-url-path: ${management.server.servlet.context-path}/info
-    health-check-url-path: ${management.server.servlet.context-path}/health
+    #status-page-url-path: ${management.server.servlet.context-path}/info
+    #health-check-url-path: ${management.server.servlet.context-path}/health
     metadata-map:
       name: demoserver
       version: 1.0
