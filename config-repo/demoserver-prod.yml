@@ -31,6 +31,9 @@ spring:
 
 # Actuator 监控
 management:
+  server:
+    servlet:
+      context-path: admin
   endpoints:
     web:
       exposure:
