@@ -53,7 +53,6 @@ info:
 eureka:
   instance:
     prefer-ip-address: true
-    hostname: ${HOST_NAME}
     #status-page-url-path: ${management.server.servlet.context-path}/info
     #health-check-url-path: ${management.server.servlet.context-path}/health
     metadata-map:
