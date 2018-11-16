@@ -66,6 +66,7 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+      username: admin
       name: admin
       password: eurekaserver
     enabled: true
