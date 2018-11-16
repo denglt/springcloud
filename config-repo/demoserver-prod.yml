@@ -52,8 +52,8 @@ info:
 
 eureka:
   instance:
-    hostname: 127.0.0.1
-    port: 8761
+    prefer-ip-address: true
+    hostname: ${HOST_NAME}
     #status-page-url-path: ${management.server.servlet.context-path}/info
     #health-check-url-path: ${management.server.servlet.context-path}/health
     metadata-map:
@@ -65,7 +65,7 @@ eureka:
     #由于注册中心的职责就是维护服务实例,它并不需要去检索服务,所以也设置为false
     fetch-registry: true
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+      defaultZone: http://admin:eurekaserver@127.0.0.1:8761/eureka/
       username: admin
       name: admin
       password: eurekaserver
