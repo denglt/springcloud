@@ -33,7 +33,7 @@ spring:
 management:
   server:
     servlet:
-      context-path: admin
+      context-path: /admin
   endpoints:
     web:
       exposure:
