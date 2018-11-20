@@ -27,15 +27,17 @@ public class DiscoveryControll {
     private DiscoveryClient discoveryClient;
 
     @RequestMapping("/instances/{serviceId}")
-    public List<String> instances(@PathVariable("serviceId") String serviceId) {
+    public List<ServiceInstance> instances(@PathVariable("serviceId") String serviceId) {
 
         List<ServiceInstance> instances = discoveryClient.getInstances(serviceId);
-        return instances.stream().map(t -> {
+        instances.forEach(System.out::println);
+        return instances;
+/*        return instances.stream().map(t -> {
             if (t instanceof EurekaDiscoveryClient.EurekaServiceInstance) {
-                return ((EurekaDiscoveryClient.EurekaServiceInstance) t).getInstanceInfo().toString();
+                 return ((EurekaDiscoveryClient.EurekaServiceInstance) t).getInstanceInfo().toString();
             } else
                 return t.toString();
-        }).collect(Collectors.toList());
+        }).collect(Collectors.toList());*/
     }
 
 

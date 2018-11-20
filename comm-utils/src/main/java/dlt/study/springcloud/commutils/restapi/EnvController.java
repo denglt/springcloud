@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Properties;
 import java.util.stream.StreamSupport;
@@ -39,6 +40,9 @@ public class EnvController implements EnvironmentAware {
                 .flatMap(Arrays::stream)
                 .forEach(propName -> properties.setProperty(propName,
                         environment.getProperty(propName) == null ? "null" : environment.getProperty(propName)));
+
+        properties.setProperty("active.profiles",Arrays.toString(environment.getActiveProfiles()));
+
     }
 
     @RequestMapping("/env")

@@ -1,13 +1,12 @@
-server:
-  port: 8761
 spring:
   application:
     name: eurekaserver
-  security:
-    user:
-      name: admin
-      password: eurekaserver
-      roles: ADMIN
+  profiles:
+    active:
+      #- insecure
+      - secure
+server:
+  port: 8761
 
 eureka:
   instance:
@@ -18,7 +17,7 @@ eureka:
     #由于注册中心的职责就是维护服务实例,它并不需要去检索服务,所以也设置为false
     fetch-registry: false
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+      defaultZone: ${EUREKA_SERVICE_URL:http://127.0.0.1:8761}/eureka/
     enabled: true
     healthcheck:
       enabled: true
@@ -33,3 +32,15 @@ management:
     health:
       show-details: always
 
+---
+spring:
+  profiles: insecure
+
+---
+spring:
+  profiles: secure
+  security:
+    user:
+      name: admin
+      password: eurekaserver
+      roles: ADMIN

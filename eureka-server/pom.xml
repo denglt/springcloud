@@ -41,10 +41,10 @@
 
         <!-- 权限控制 -->
  <!-- 配置权限后， Eureka Client 无法登录 // com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server -->
-<!--        <dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>-->
+        </dependency>
 
     </dependencies>
 
