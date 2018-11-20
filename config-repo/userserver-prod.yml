@@ -78,4 +78,4 @@ eureka:
   instance:
     metadata-map:
       user.name: admin
-      user.password:  eurekaserver
+      user.password: eurekaserver
