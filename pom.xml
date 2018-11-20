@@ -8,8 +8,11 @@
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>eureka-server</module>
+        <module>eureka-server-noboot</module>
         <module>config-server</module>
+        <module>demo-server</module>
+        <module>eureka-server</module>
+        <module>user-server</module>
     </modules>
 
     <properties>
@@ -21,8 +24,9 @@
         <junit-version>4.11</junit-version>
         <javax-inject-version>1</javax-inject-version>
         <slf4j-version>1.7.25</slf4j-version>
-        <spring-boot-version>2.0.4.RELEASE</spring-boot-version>
-        <spring-cloud-version>Finchley.RELEASE</spring-cloud-version>
+        <spring-boot-version>2.0.6.RELEASE</spring-boot-version>
+        <spring-cloud-version>Finchley.SR2</spring-cloud-version>
+        <guava-version>25.1-jre</guava-version>
     </properties>
 
     <dependencyManagement>
@@ -49,6 +53,12 @@
                 <groupId>javax.inject</groupId>
                 <artifactId>javax.inject</artifactId>
                 <version>${javax-inject-version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava-version}</version>
             </dependency>
 
         </dependencies>

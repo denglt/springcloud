@@ -1,10 +1,10 @@
 # Server HTTP port.
 server:
   servlet:
-    context-path: /demoserver
+    context-path: /userserver
     session:
       timeout:
-  port: 8881
+  port: 8882
   address:
   connection-timeout: 10s
 
@@ -12,13 +12,14 @@ spring:
   security:
     user:
       name: admin
-      password: demoserver
+      password: userserver
+
 
 # Actuator 监控
 management:
   server:
     servlet:
-      context-path: /demoserver
+      context-path: /userserver
   endpoints:
     web:
       exposure:
@@ -31,7 +32,7 @@ management:
 #/info Endpoint
 info:
   app:
-    name: Demo Server
+    name: User Server
     description: prod
     version: 3.0.0
 
@@ -41,7 +42,7 @@ eureka:
     #status-page-url-path: ${management.server.servlet.context-path}/info
     #health-check-url-path: ${management.server.servlet.context-path}/health
     metadata-map:
-      name: demoserver
+      name: userserver
       version: 1.0
   client:
     #由于该应用为注册中心,所以设置为false,代表不向注册中心注册自己

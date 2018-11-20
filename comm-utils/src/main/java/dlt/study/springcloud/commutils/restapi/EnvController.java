@@ -1,4 +1,4 @@
-package dlt.study.springcloud.restapi;
+package dlt.study.springcloud.commutils.restapi;
 
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.AbstractEnvironment;

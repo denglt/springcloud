@@ -7,23 +7,18 @@
         <groupId>dlt.study.springcloud</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>dlt.study.springcloud</groupId>
-    <artifactId>demo-server</artifactId>
+    <groupId>com.study.springcloud</groupId>
+    <artifactId>eureka-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>demo-server</name>
+    <name>eureka-server</name>
     <description>Demo project for Spring Boot</description>
 
-
     <dependencies>
-        <dependency>
-            <groupId>dlt.study.springcloud</groupId>
-            <artifactId>comm-utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -41,13 +36,15 @@
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
+        <!-- 权限控制 -->
+ <!-- 配置权限后， Eureka Client 无法登录 // com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server -->
+<!--        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>-->
 
     </dependencies>
 
