@@ -8,11 +8,7 @@ server:
   address:
   connection-timeout: 10s
 
-spring:
-  security:
-    user:
-      name: admin
-      password: demoserver
+
 
 # Actuator 监控
 management:
@@ -56,3 +52,32 @@ eureka:
     enabled: true
     healthcheck:
       enabled: true
+
+
+---
+spring:
+  profiles: insecure
+  autoconfigure:
+    exclude:
+    - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+---
+spring:
+  profiles: secure
+  security:
+    user:
+      name: admin
+      password: demoserver
+
+---
+spring:
+  profiles: eureka-secure
+
+eureka:
+  instance:
+    metadata-map:
+      user.name: admin
+      user.password: eurekaserver
+
+---
+spring:
+  profiles: eureka-insecure

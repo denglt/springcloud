@@ -79,3 +79,7 @@ eureka:
     metadata-map:
       user.name: admin
       user.password: eurekaserver
+
+---
+spring:
+  profiles: eureka-insecure

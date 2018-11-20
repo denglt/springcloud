@@ -3,7 +3,7 @@ server:
 spring:
   profiles:
     active:
-      - nosecure
+      - insecure
   application:
     name: configserver
   cloud:
@@ -34,7 +34,7 @@ management:
 
 ---
 spring:
-  profiles: nosecure
+  profiles: insecure
   autoconfigure:
     exclude:
     - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
@@ -44,5 +44,5 @@ spring:
   security:
     user:
       name: admin
-      password: admin
+      password: configserver
       roles: ADMIN

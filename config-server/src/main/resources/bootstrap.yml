@@ -12,3 +12,4 @@ spring:
           username:
           password:
           searchPaths: config-repo
+      profile: secure

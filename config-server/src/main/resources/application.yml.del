@@ -1,19 +1,16 @@
 server:
   port: 8888
 spring:
+  profiles:
+    active:
+      - nosecure
   application:
     name: configserver
-  security:
-    user:
-      name: admin
-      password: admin
-      roles: ADMIN
   cloud:
     config:
       server:
         git:
           uri: https://github.com/denglt/springcloud
-          #uri: file:///Users/denglt/onGithub/spring-cloud-config-repo
           searchPaths: config-repo
           username:
           password:
@@ -35,3 +32,18 @@ management:
     health:
       show-details: always
 
+---
+spring:
+  profiles: nosecure
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+---
+spring:
+  profiles: secure
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: ADMIN
