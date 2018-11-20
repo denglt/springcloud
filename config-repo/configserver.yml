@@ -1,13 +1,11 @@
 server:
   port: 8888
 spring:
+  profiles:
+    active:
+      - secure
   application:
     name: configserver
-  security:
-    user:
-      name: admin
-      password: admin
-      roles: ADMIN
   cloud:
     config:
       server:
@@ -34,3 +32,15 @@ management:
     health:
       show-details: always
 
+---
+spring:
+  profiles: nosecure
+
+---
+spring:
+  profiles: secure
+  security:
+    user:
+      name: admin
+      password: admin
+      roles: ADMIN
