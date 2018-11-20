@@ -5,7 +5,7 @@ spring:
     config:
       uri: http://127.0.0.1:8888
       username: admin
-      password: admin
+      password: configserver
       profile: prod,insecure,eureka-insecure
       fail-fast: true
       retry:
