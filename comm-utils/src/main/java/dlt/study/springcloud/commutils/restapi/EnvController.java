@@ -5,6 +5,7 @@ import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.EnumerablePropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.MutablePropertySources;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,17 +42,17 @@ public class EnvController implements EnvironmentAware {
                 .forEach(propName -> properties.setProperty(propName,
                         environment.getProperty(propName) == null ? "null" : environment.getProperty(propName)));
 
-        properties.setProperty("active.profiles",Arrays.toString(environment.getActiveProfiles()));
+        properties.setProperty("active.profiles", Arrays.toString(environment.getActiveProfiles()));
 
     }
 
-    @RequestMapping("/env")
+    @RequestMapping(value = "/env", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public String env(String name) {
         String property = environment.getProperty(name);
         return name + " ->" + property;
     }
 
-    @RequestMapping("/allenv")
+    @RequestMapping(value = "/allenv", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Map env() {
         return properties;
     }
