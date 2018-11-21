@@ -50,4 +50,5 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_SERVICE_URL:http://admin:eurekaserver@127.0.0.1:8761}/eureka/
+      defaultZone: ${EUREKA_SERVICE_URL:http://127.0.0.1:8761}/eureka/
+      Authorization: Basic YWRtaW46ZXVyZWthc2VydmVy
