@@ -10,7 +10,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/denglt/springcloud
+          uri: file:///Users/denglt/onGithub/springcloud
+          #uri: https://github.com/denglt/springcloud
           searchPaths: config-repo
           username:
           password:
