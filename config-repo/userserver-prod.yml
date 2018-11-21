@@ -75,11 +75,9 @@ spring:
   profiles: eureka-secure
 
 eureka:
-  instance:
-    metadata-map:
-      user.name: admin
-      user.password: eurekaserver
-
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL:http://admin:eurekaserver@127.0.0.1:8761}/eureka/
 ---
 spring:
   profiles: eureka-insecure
