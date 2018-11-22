@@ -7,7 +7,7 @@ spring:
         # configserver configure itself from its own remote repository
         bootstrap: true
         git:
-          uri: file:///Users/denglt/onGithub/springcloud
+          uri: file:///Users/denglt/onGithub/localconfig
           #uri: https://github.com/denglt/springcloud
           username:
           password:
