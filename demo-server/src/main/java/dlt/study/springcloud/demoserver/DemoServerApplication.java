@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @EnableDiscoveryClient
 //@EnableEurekaClient
-@ComponentScan(value = {"dlt.study.springcloud"})
+@ComponentScan(value = {"dlt.study.springcloud","dlt.study.service"})
 @EnableAutoConfiguration  // ConfigClientAutoConfiguration
 @SpringBootApplication
 public class DemoServerApplication {
