@@ -1,8 +1,9 @@
 package dlt.study.service;
 
+import com.google.common.collect.Maps;
+import dlt.study.springcloud.commutils.RestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
@@ -17,12 +18,16 @@ import java.util.Map;
 public class UserService {
 
     @Autowired
-    private RestTemplate restTemplate;
+    private RestService restService;
 
 
-    public Map<String,Object> get(Long userId){
-        System.out.println(restTemplate);
-        return restTemplate.getForObject("http://userserver/" + "userserver/" + userId, Map.class);
+    public Map<String, Object> get(Long userId) {
+        return restService.getForObject("userserver", "userserver/get/" + userId, Map.class);
     }
 
+    public Map<String, Object> find(String name) {
+        Map<String, String> params = Maps.newConcurrentMap();
+        params.put("name", name);
+        return restService.postForObject("userserver", "userserver/find", params, Map.class);
+    }
 }

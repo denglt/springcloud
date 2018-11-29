@@ -9,6 +9,10 @@ server:
   port: 8761
 
 eureka:
+  server:
+    # 测试时关闭自我保护机制，保证不可用服务及时踢出
+    enable-self-preservation: true
+    eviction-interval-timer-in-ms: 30000
   instance:
     hostname: 127.0.0.1
 
@@ -17,6 +21,7 @@ eureka:
     register-with-eureka: false
     #由于注册中心的职责就是维护服务实例,它并不需要去检索服务,所以也设置为false
     fetch-registry: true
+    registry-fetch-interval-seconds: 5
     service-url:
       defaultZone: ${EUREKA_SERVICE_URL:http://127.0.0.1:8761}/eureka/
     enabled: true

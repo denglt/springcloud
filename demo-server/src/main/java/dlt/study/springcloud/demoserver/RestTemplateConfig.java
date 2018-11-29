@@ -20,13 +20,6 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class RestTemplateConfig {
 
-    @LoadBalanced  // do restTemplate.setInterceptors  (LoadBalancerInterceptor)
-    @Primary
-    @Bean("cloudRestTemplate")
-    RestTemplate balancedTemplate(RestTemplateBuilder builder){
-        return builder.build();
-    }
-
     @Bean
     RestTemplate restTemplate(RestTemplateBuilder builder){
         return builder.build();

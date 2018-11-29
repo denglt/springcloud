@@ -9,7 +9,6 @@ server:
   connection-timeout: 10s
 
 
-
 # Actuator 监控
 management:
   server:
@@ -37,6 +36,10 @@ eureka:
     #status-page-url-path: ${management.server.servlet.context-path}/info
     #health-check-url-path: ${management.server.servlet.context-path}/health
     #home-page-url-path:
+    #发送心跳时间间隔
+    lease-renewal-interval-in-seconds: 5
+    #服务端多久没有收到心跳，将删除实例
+    lease-expiration-duration-in-seconds: 10
     metadata-map:
       name: demoserver
       version: 1.0

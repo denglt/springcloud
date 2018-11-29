@@ -41,6 +41,11 @@ eureka:
     prefer-ip-address: true
     #status-page-url-path: ${management.server.servlet.context-path}/info
     #health-check-url-path: ${management.server.servlet.context-path}/health
+
+    #发送心跳时间间隔
+    lease-renewal-interval-in-seconds: 5
+    #服务端多久没有收到心跳，将删除实例
+    lease-expiration-duration-in-seconds: 10
     metadata-map:
       name: userserver
       version: 1.0
@@ -49,6 +54,7 @@ eureka:
     register-with-eureka: true
     #由于注册中心的职责就是维护服务实例,它并不需要去检索服务,所以也设置为false
     fetch-registry: true
+    registry-fetch-interval-seconds: 5
     service-url:
       defaultZone: ${EUREKA_SERVICE_URL:http://127.0.0.1:8761}/eureka/
     enabled: true
@@ -80,3 +86,9 @@ eureka:
 ---
 spring:
   profiles: eureka-insecure
+
+---
+spring:
+  profiles: prod2
+server:
+  port: 8883
