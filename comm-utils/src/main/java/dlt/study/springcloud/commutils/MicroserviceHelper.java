@@ -18,16 +18,17 @@ import org.springframework.web.client.RestTemplate;
  */
 
 @Configuration
-public class RestService {
+public class MicroserviceHelper {
 
-    @Autowired
-    @Qualifier("cloudRestTemplate")
+   // @Autowired
+   // @Qualifier("cloudRestTemplate")
     private RestTemplate restTemplate;
 
-    @LoadBalanced  // do restTemplate.setInterceptors  (LoadBalancerInterceptor)
+    @LoadBalanced  // 由 LoadBalancerAutoConfiguration 进行（LoadBalancerInterceptor or RetryLoadBalancerInterceptor(依赖Spring Retry) 的装载）（ restTemplate.setInterceptors ）
     @Bean("cloudRestTemplate")
-    RestTemplate balancedTemplate(RestTemplateBuilder builder) {
-        return builder.build();
+    RestTemplate balancedTemplate() {
+        restTemplate = new RestTemplate();
+        return restTemplate;
     }
 
 

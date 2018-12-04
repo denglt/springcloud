@@ -1,7 +1,7 @@
 package dlt.study.service;
 
 import com.google.common.collect.Maps;
-import dlt.study.springcloud.commutils.RestService;
+import dlt.study.springcloud.commutils.MicroserviceHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
@@ -18,16 +18,16 @@ import java.util.Map;
 public class UserService {
 
     @Autowired
-    private RestService restService;
+    private MicroserviceHelper microserviceHelper;
 
 
     public Map<String, Object> get(Long userId) {
-        return restService.getForObject("userserver", "userserver/get/" + userId, Map.class);
+        return microserviceHelper.getForObject("userserver", "userserver/get/" + userId, Map.class);
     }
 
     public Map<String, Object> find(String name) {
         Map<String, String> params = Maps.newConcurrentMap();
         params.put("name", name);
-        return restService.postForObject("userserver", "userserver/find", params, Map.class);
+        return microserviceHelper.postForObject("userserver", "userserver/find", params, Map.class);
     }
 }

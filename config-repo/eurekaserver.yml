@@ -12,7 +12,7 @@ eureka:
   server:
     # 测试时关闭自我保护机制，保证不可用服务及时踢出
     enable-self-preservation: true
-    eviction-interval-timer-in-ms: 30000
+    eviction-interval-timer-in-ms: 60000
   instance:
     hostname: 127.0.0.1
 

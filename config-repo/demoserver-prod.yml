@@ -1,3 +1,9 @@
+#远程服务配置：
+userserver:
+  ribbon:
+    retryableStatusCodes: 404,502,500   #错误重试状态码  RibbonLoadBalancedRetryFactory
+
+
 # Server HTTP port.
 server:
   servlet:
@@ -56,6 +62,13 @@ eureka:
     healthcheck:
       enabled: true
 
+spring:
+  cloud:
+    inetutils:
+      useOnlySiteLocalInterfaces: true
+    loadbalancer:
+      retry:
+        enabled: true  # 这个生效的条件： spring retry（ RetryTemplate）LoadBalancerAutoConfiguration
 
 ---
 spring:

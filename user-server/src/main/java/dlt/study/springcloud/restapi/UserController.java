@@ -54,6 +54,8 @@ public class UserController {
     @RequestMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public User get(@PathVariable("id") Integer userId) {
         System.out.println("收到请求 -> get -> " + userId);
+        if (userId == 1)
+            throw new RuntimeException("就是要报错！");
         Optional<User> user = users.stream().filter(u -> u.getId().equals(userId)).findFirst();
         return user.isPresent() ? user.get() : EMPTY;
     }

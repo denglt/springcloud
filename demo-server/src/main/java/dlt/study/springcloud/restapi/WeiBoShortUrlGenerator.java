@@ -27,7 +27,7 @@ public class WeiBoShortUrlGenerator  {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    @Qualifier("restTemplate")
+    @Qualifier("myRestTemplate")
     private RestTemplate restTemplate;
 
     @RequestMapping("/shortUrl")
