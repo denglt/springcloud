@@ -40,10 +40,11 @@
         </dependency>
 
         <!-- needed for discovery first bootstrap -->
-        <dependency>
+        <!-- 通过注册中心寻找 配置中心服务 -->
+<!--        <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 

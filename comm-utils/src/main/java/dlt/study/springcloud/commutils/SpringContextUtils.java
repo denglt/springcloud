@@ -3,14 +3,12 @@ package dlt.study.springcloud.commutils;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.MessageSourceResolvable;
-import org.springframework.context.NoSuchMessageException;
+import org.springframework.context.*;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Locale;
@@ -36,16 +34,25 @@ public final class SpringContextUtils implements ApplicationContextAware, BeanFa
         this.beanFactory = beanFactory;
     }
 
+    @PostConstruct
+    public void postConstruct(){
+        System.out.println(applicationContext);
+        System.out.println(beanFactory);
+        if (applicationContext instanceof  ConfigurableApplicationContext)
+           System.out.println(((ConfigurableApplicationContext)applicationContext).getBeanFactory());
+    }
+
     public static void init(String[] xmls) {
         applicationContext = new ClassPathXmlApplicationContext(xmls);
 
-        if (applicationContext instanceof AbstractApplicationContext) {
-            ((AbstractApplicationContext) applicationContext)
-                    .registerShutdownHook();// 调用singleton
+        if (applicationContext instanceof ConfigurableApplicationContext) {
+            ((ConfigurableApplicationContext) applicationContext).registerShutdownHook();// 调用singleton
             // bean上的相应析构回调方法，需要在JVM里注册一个“关闭钩子”
         }
 
     }
+
+
 
     @SuppressWarnings("unchecked")
     public static <T> T getBean(String beanName) {

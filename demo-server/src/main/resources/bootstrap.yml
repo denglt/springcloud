@@ -7,7 +7,7 @@ spring:
       username: admin
       password: configserver
       profile: prod,insecure,eureka-secure
-      fail-fast: true
+      fail-fast: true  # true =>  fail startup of a service if it cannot connect to the Config Server
       retry: # Then you need to add spring-retry and spring-boot-starter-aop , enable retry
         initial-interval: 1000
         max-attempts: 10000
