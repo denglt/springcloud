@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.cloud.client.actuator.HasFeatures;
 import org.springframework.cloud.config.server.EnableConfigServer;
 import org.springframework.context.EnvironmentAware;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.AbstractEnvironment;
 import org.springframework.core.env.EnumerablePropertySource;
@@ -50,4 +52,16 @@ public class ConfigServerApplication implements EnvironmentAware {
     private Properties properties = new Properties();
 
     private Environment environment;
+
+
+    /**
+     * add feature
+     * mappings : actuator/features  (中显示相应的信息)
+     * @return
+     */
+    @Bean
+    public HasFeatures localFeatures() {
+        return HasFeatures.namedFeature("My Config Server",
+                this.getClass());
+    }
 }

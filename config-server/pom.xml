@@ -40,6 +40,7 @@
         </dependency>
 
         <!-- needed for discovery first bootstrap -->
+        <!-- https://cloud.spring.io/spring-cloud-static/Finchley.SR2/single/spring-cloud.html#discovery-first-bootstrap -->
         <!-- 通过注册中心寻找 配置中心服务 -->
 <!--        <dependency>
             <groupId>org.springframework.cloud</groupId>

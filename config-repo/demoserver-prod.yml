@@ -1,5 +1,5 @@
-#远程服务配置：
-userserver:
+#远程服务配置重试配置：
+userserver:  # 服务名称
   ribbon:
     retryableStatusCodes: 404,502,500   #错误重试状态码  RibbonLoadBalancedRetryFactory
 
@@ -50,10 +50,8 @@ eureka:
       name: demoserver
       version: 1.0
   client:
-    #由于该应用为注册中心,所以设置为false,代表不向注册中心注册自己
-    register-with-eureka: true
-    #由于注册中心的职责就是维护服务实例,它并不需要去检索服务,所以也设置为false
-    fetch-registry: true
+    register-with-eureka: true  #是否向eureka server注册service
+    fetch-registry: true   # 是否从eureka server获取service
     registry-fetch-interval-seconds: 5
     service-url:
       #defaultZone: http://admin:eurekaserver@127.0.0.1:8761/eureka/

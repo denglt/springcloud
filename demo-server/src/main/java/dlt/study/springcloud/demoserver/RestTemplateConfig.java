@@ -74,5 +74,5 @@ public class RestTemplateConfig implements ApplicationContextAware, SmartInitial
 
     private ApplicationContext applicationContext;
 
-    public Map<String, RestTemplate> restTemplateMap = Maps.newConcurrentMap();
+    private Map<String, RestTemplate> restTemplateMap = Maps.newConcurrentMap();
 }
