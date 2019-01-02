@@ -11,9 +11,9 @@ server:
 spring:
   profiles:
     active:
-     # - insecure
-      - secure
-      - eureka-secure
+    # - insecure
+    - secure
+    - eureka-secure
 
 # Actuator 监控
 management:

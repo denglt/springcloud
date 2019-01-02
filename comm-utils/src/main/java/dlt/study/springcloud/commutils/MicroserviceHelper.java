@@ -1,8 +1,5 @@
 package dlt.study.springcloud.commutils;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,11 +17,12 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class MicroserviceHelper {
 
-   // @Autowired
-   // @Qualifier("cloudRestTemplate")
+    // @Autowired
+    // @Qualifier("cloudRestTemplate")
     private RestTemplate restTemplate;
 
-    @LoadBalanced  // 由 LoadBalancerAutoConfiguration 进行（LoadBalancerInterceptor or RetryLoadBalancerInterceptor(依赖Spring Retry) 的装载）（ restTemplate.setInterceptors ）
+    @LoadBalanced
+    // 由 LoadBalancerAutoConfiguration 进行（LoadBalancerInterceptor or RetryLoadBalancerInterceptor(依赖Spring Retry) 的装载）（ restTemplate.setInterceptors ）
     @Bean("cloudRestTemplate")
     RestTemplate balancedTemplate() {
         restTemplate = new RestTemplate();

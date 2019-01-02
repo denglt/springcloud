@@ -26,16 +26,15 @@ public class DemoControll {
 
 
     @RequestMapping(value = "user/id/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Map getUser(@PathVariable("id") Long id){
+    public Map getUser(@PathVariable("id") Long id) {
         return userService.get(id);
     }
 
 
     @RequestMapping(value = "user/name/{username}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Map getUser(@PathVariable("username") String username){
+    public Map getUser(@PathVariable("username") String username) {
         return userService.find(username);
     }
-
 
 
 }

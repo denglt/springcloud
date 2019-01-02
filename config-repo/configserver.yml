@@ -3,7 +3,7 @@ server:
 spring:
   profiles:
     active:
-      - insecure
+    - insecure
   application:
     name: configserver
   cloud:

@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * org.springframework.cloud.config.client.ConfigServiceBootstrapConfiguration
- *
  */
 
 @Configuration

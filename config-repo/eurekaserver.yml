@@ -3,8 +3,8 @@ spring:
     name: eurekaserver
   profiles:
     active:
-      #- insecure
-      - secure
+    #- insecure
+    - secure
 server:
   port: 8761
 

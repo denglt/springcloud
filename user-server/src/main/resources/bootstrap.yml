@@ -6,7 +6,8 @@ spring:
       uri: http://127.0.0.1:8888
       username: admin
       password: configserver
-      profile: prod,insecure,eureka-secure
+      profile: ${profile}  # -Dprofile=prod,insecure,eureka-secure
+      #profile: prod,insecure,eureka-secure
       #profile: prod,insecure,eureka-secure,prod2
       fail-fast: true
       retry:

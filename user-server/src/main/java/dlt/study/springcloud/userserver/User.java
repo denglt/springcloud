@@ -11,12 +11,12 @@ public class User implements Serializable {
     private String passwword;
     private String role;
 
-    public User(){
+    public User() {
 
     }
 
 
-    public User(String userName){
+    public User(String userName) {
         this.name = userName;
     }
 

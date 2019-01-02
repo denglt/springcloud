@@ -35,11 +35,11 @@ public final class SpringContextUtils implements ApplicationContextAware, BeanFa
     }
 
     @PostConstruct
-    public void postConstruct(){
+    public void postConstruct() {
         System.out.println(applicationContext);
         System.out.println(beanFactory);
-        if (applicationContext instanceof  ConfigurableApplicationContext)
-           System.out.println(((ConfigurableApplicationContext)applicationContext).getBeanFactory());
+        if (applicationContext instanceof ConfigurableApplicationContext)
+            System.out.println(((ConfigurableApplicationContext) applicationContext).getBeanFactory());
     }
 
     public static void init(String[] xmls) {
@@ -51,7 +51,6 @@ public final class SpringContextUtils implements ApplicationContextAware, BeanFa
         }
 
     }
-
 
 
     @SuppressWarnings("unchecked")

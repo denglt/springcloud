@@ -35,8 +35,8 @@ public class RestTemplateConfig implements ApplicationContextAware, SmartInitial
     @MyCreateFlag
     @Bean("myRestTemplate")
     RestTemplate restTemplate(RestTemplateBuilder builder) {
-         return builder.build();
-       // return new RestTemplate(); //这个RestTemplate无法被 RestTemplateCustomizer感知(@see RestTemplateAutoConfiguration)
+        return builder.build();
+        // return new RestTemplate(); //这个RestTemplate无法被 RestTemplateCustomizer感知(@see RestTemplateAutoConfiguration)
     }
 
     @Bean("emptyRestTemplateCustomizer")
@@ -58,7 +58,7 @@ public class RestTemplateConfig implements ApplicationContextAware, SmartInitial
     public void afterSingletonsInstantiated() {
         applicationContext.getBeansOfType(RestTemplate.class).forEach((k, v) -> {
             System.out.println(k + " -> " + v);
-            restTemplateMap.put(k,v);
+            restTemplateMap.put(k, v);
         });
     }
 

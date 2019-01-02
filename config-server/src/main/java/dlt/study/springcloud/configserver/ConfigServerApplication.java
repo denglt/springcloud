@@ -57,6 +57,7 @@ public class ConfigServerApplication implements EnvironmentAware {
     /**
      * add feature
      * mappings : actuator/features  (中显示相应的信息)
+     *
      * @return
      */
     @Bean

@@ -11,6 +11,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 public class LogApplicationEvent implements ApplicationListener<ApplicationEvent> {
 
     private static final Logger logger = LoggerFactory.getLogger(LogApplicationEvent.class);
+
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
         logger.info("ApplicationEvent -> " + event.toString());

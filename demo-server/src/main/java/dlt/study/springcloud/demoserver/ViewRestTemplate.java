@@ -31,7 +31,7 @@ public class ViewRestTemplate {
     private List<RestTemplate> restTemplates2 = Lists.newArrayList();
 
     @PostConstruct
-    public void init(){
+    public void init() {
         System.out.println("LoadBalanced RestTemplates :");
         restTemplates.forEach(System.out::println);
 
