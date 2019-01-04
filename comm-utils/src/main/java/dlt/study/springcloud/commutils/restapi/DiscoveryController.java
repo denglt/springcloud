@@ -24,7 +24,7 @@ import java.util.List;
 public class DiscoveryController {
 
     @Autowired
-    private DiscoveryClient discoveryClient;
+    private DiscoveryClient discoveryClient; // EurekaClientAutoConfiguration -> EurekaDiscoveryClient
 
     @GetMapping
     @RequestMapping(value = "/{serviceId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

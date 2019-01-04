@@ -5,6 +5,12 @@ userserver:  # 服务名称
 
 ribbon:  # 默认配置(所有服务)
   retryableStatusCodes: 404,502,500
+  PoolMaxThreads: 200 # default 200
+  PoolMinThreads: 1   # default 1
+  ConnectTimeout: 2000 # default 2000
+  ReadTimeout: 3000    # default 5000
+  MaxTotalConnections: 500  # default 200
+  MaxConnectionsPerHost: 100 # default 50
 
 # Server HTTP port.
 server:

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -52,8 +53,9 @@ public class UserController {
     }
 
     @RequestMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public User get(@PathVariable("id") Integer userId) {
+    public User get(@PathVariable("id") Integer userId , HttpServletResponse response) {
         System.out.println("收到请求 -> get -> " + userId);
+        response.addHeader("autoor","denglt");
         if (userId == 1)
             throw new RuntimeException("就是要报错！");
         Optional<User> user = users.stream().filter(u -> u.getId().equals(userId)).findFirst();

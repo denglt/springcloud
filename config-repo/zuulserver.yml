@@ -13,12 +13,17 @@ ribbon:  # 默认配置(所有服务)
 
 zuul:  # ZuulProperties
   ignoredServices: "*"
+  addProxyHeaders: true # default false
+  debug.request: true
   routes:
     userserver:
       path: /userserver/**
       stripPrefix: false
       retryable: true  # 加上配置ribbon.retryableStatusCodes，才会retry
-    demoserver: /demoserver/**
+    demoserver:
+      path: /demoserver/**
+      stripPrefix: false
+      retryable: true
 
 # Actuator 监控
 management:

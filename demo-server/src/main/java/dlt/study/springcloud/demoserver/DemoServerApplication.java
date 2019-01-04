@@ -15,7 +15,8 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@EnableDiscoveryClient  //@EnableEurekaClient
+@EnableDiscoveryClient  // 配置 DiscoveryClient
+//@EnableEurekaClient  // 配置 EurekaDiscoveryClient
 @EnableHystrix   // @EnableCircuitBreaker
 @EnableHystrixDashboard // Hystrix 监控
 @ComponentScan(value = {"dlt.study.springcloud", "dlt.study.service"})

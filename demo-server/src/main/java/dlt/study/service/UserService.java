@@ -9,8 +9,7 @@ import dlt.study.springcloud.commutils.MicroserviceHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.client.HttpServerErrorException;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -21,7 +20,7 @@ import java.util.Map;
  * @Date: 2018/11/22 5:33 PM
  * @Copyright: 版权归 HSYUNTAI 所有
  */
-@Configuration
+@Component
 public class UserService {
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -30,7 +29,7 @@ public class UserService {
 
     @HystrixCommand(fallbackMethod = "fallbackForGet",
             commandProperties = {  // @see HystrixCommandProperties
-                    @HystrixProperty(name = HystrixPropertiesManager.FALLBACK_ENABLED, value = "false"), // when fallback_enabled = false ,throw RuntimeException : Hystrix circuit short-circuited and is OPEN
+                    @HystrixProperty(name = HystrixPropertiesManager.FALLBACK_ENABLED, value = "true"), // when fallback_enabled = false ,throw RuntimeException : Hystrix circuit short-circuited and is OPEN
                     @HystrixProperty(name = HystrixPropertiesManager.EXECUTION_ISOLATION_STRATEGY, value = "SEMAPHORE"), // SEMAPHORE|THREAD
                     @HystrixProperty(name = HystrixPropertiesManager.EXECUTION_ISOLATION_SEMAPHORE_MAX_CONCURRENT_REQUESTS, value = "10"),
                     @HystrixProperty(name = HystrixPropertiesManager.EXECUTION_TIMEOUT_ENABLED, value = "true"),
@@ -51,7 +50,7 @@ public class UserService {
                     @HystrixProperty(name = HystrixPropertiesManager.CORE_SIZE, value = "10"),
                     @HystrixProperty(name = HystrixPropertiesManager.MAXIMUM_SIZE, value = "10"),
                     @HystrixProperty(name = HystrixPropertiesManager.MAX_QUEUE_SIZE, value = "100")
-            },
+            } ,
             /*           ignoreExceptions = {  //配置HystrixCommand忽略的错误，这种错误会包装为HystrixBadRequestException，不会触发熔断 //
                                HttpServerErrorException.class},*/
             raiseHystrixExceptions = {HystrixException.RUNTIME_EXCEPTION}
@@ -71,7 +70,7 @@ public class UserService {
         logger.info("fallback for user get -> {}", userId);
         Map<String, Object> result = Maps.newHashMap();
         result.put("id", -1);
-        result.put("msg", "无法获取到用户StartHdp");
+        result.put("msg", "无法获取到用户!");
         return result;
     }
 }
