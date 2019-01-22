@@ -21,8 +21,28 @@ public class MicroserviceHelper {
     // @Qualifier("cloudRestTemplate")
     private RestTemplate restTemplate;
 
+    /**
+       LoadBalanced 由 LoadBalancerAutoConfiguration 进行装配请求中断ClientHttpRequestInterceptor来实现 （ restTemplate.setInterceptors ）
+       ClientHttpRequestInterceptor 有两大实现：
+        1、LoadBalancerInterceptor (无spring retry)
+          construct参数（LoadBalancerClient  （实现类：RibbonLoadBalancerClient,由RibbonAutoConfiguration配置完成）
+               LoadBalancerRequestFactory(LoadBalancerClient loadBalancer)
+               ）
+        2、RetryLoadBalancerInterceptor(有spring retry)
+          construct参数（
+              LoadBalancerClient （实现类：RibbonLoadBalancerClient）
+              LoadBalancerRetryProperties （spring.cloud.loadbalancer.retry.enabled = true）
+              LoadBalancerRequestFactory
+              LoadBalancedRetryFactory （实现类：RibbonLoadBalancedRetryFactory )
+                 该类创建： LoadBalancedRetryPolicy
+                          RetryListener  （RetryTemplate需要）
+                          BackOffPolicy   RetryTemplate需要）
+          ）
+          依赖：
+           InterceptorRetryPolicy （springretry 的 RetryPolicy）
+
+     */
     @LoadBalanced
-    // 由 LoadBalancerAutoConfiguration 进行（LoadBalancerInterceptor or RetryLoadBalancerInterceptor(依赖Spring Retry) 的装载）（ restTemplate.setInterceptors ）
     @Bean("cloudRestTemplate")
     RestTemplate balancedTemplate() {
         restTemplate = new RestTemplate();

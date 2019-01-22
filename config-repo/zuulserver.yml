@@ -10,6 +10,7 @@ server:
 
 ribbon:  # 默认配置(所有服务)
   retryableStatusCodes: 404,502,500
+  eager-load.enabled: true  # RibbonEagerLoadProperties
 
 zuul:  # ZuulProperties
   ignoredServices: "*"

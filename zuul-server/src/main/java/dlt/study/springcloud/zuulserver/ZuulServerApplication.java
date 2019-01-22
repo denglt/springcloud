@@ -18,14 +18,14 @@ import org.springframework.context.annotation.ComponentScan;
  *    1.4 create ZuulServlet (通过 ServletRegistrationBean 加入WebServer)
  *     配置 Filter （Filter处理器：FilterProcessor ）
  *       pre filters: ServletDetectionFilter\FormBodyWrapperFilter\DebugFilter
- *       Post filters: SendResponseFilter
+ *       Post filters: SendResponseFilter (返回代理的Response。 writes responses from proxied requests to the current response)
  *       route filters: SendForwardFilter
  *       error filters: SendErrorFilter
  *
  *  2、ZuulProxyAutoConfiguration
  *      1) DiscoveryClientRouteLocator
  *      2) 配置 proxy filters :
- *          pre filters: PreDecorationFilter
+ *          pre filters: PreDecorationFilter (在RequestContext中设置proxy相关信息（proxy、serviceId等等）)
  *          route filters: RibbonRoutingFilter、SimpleHostRoutingFilter
  *
  */

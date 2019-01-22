@@ -1,7 +1,9 @@
+# 负载均衡自动配置  LoadBalancerAutoConfiguration
+
 #远程服务配置重试配置： RibbonAutoConfiguration  RibbonClientConfiguration
 userserver:  # 服务名称
   ribbon:
-    retryableStatusCodes: 404,502,500   #错误重试状态码  RibbonLoadBalancedRetryFactory
+    retryableStatusCodes: 404,502,500   #错误重试状态码 RibbonLoadBalancedRetryFactory ，RibbonLoadBalancedRetryPolicy(该类默认只对GET方法进行retry)
 
 ribbon:  # 默认配置(所有服务)
   retryableStatusCodes: 404,502,500
@@ -11,6 +13,11 @@ ribbon:  # 默认配置(所有服务)
   ReadTimeout: 3000    # default 5000
   MaxTotalConnections: 500  # default 200
   MaxConnectionsPerHost: 100 # default 50
+  OkToRetryOnAllOperations: true # default false RibbonLoadBalancedRetryPolicy(该类默认只对GET方法进行retry)
+  MaxAutoRetriesNextServer: 1 # default 1
+
+feign:
+  hystrix.enabled: true  # default false
 
 # Server HTTP port.
 server:
@@ -74,8 +81,8 @@ spring:
     inetutils:
       useOnlySiteLocalInterfaces: true
     loadbalancer:
-      retry:
-        enabled: true  # 这个生效的条件： spring retry（ RetryTemplate）LoadBalancerAutoConfiguration
+      # LoadBalancerRetryProperties
+      retry.enabled: true   # default true  这个生效的条件,依赖：spring retry（ RetryTemplate）LoadBalancerAutoConfiguration
 
 ---
 spring:

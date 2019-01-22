@@ -2,7 +2,7 @@ package dlt.study.springcloud.restapi;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import dlt.study.springcloud.userserver.User;
+import dlt.study.springcloud.mode.User;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * @Description:

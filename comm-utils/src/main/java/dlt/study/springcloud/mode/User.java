@@ -1,4 +1,4 @@
-package dlt.study.springcloud.userserver;
+package dlt.study.springcloud.mode;
 
 import java.io.Serializable;
 
