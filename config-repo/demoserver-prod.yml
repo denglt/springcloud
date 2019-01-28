@@ -16,8 +16,17 @@ ribbon:  # 默认配置(所有服务)
   OkToRetryOnAllOperations: true # default false RibbonLoadBalancedRetryPolicy(该类默认只对GET方法进行retry)
   MaxAutoRetriesNextServer: 1 # default 1
 
-feign:
+feign:  # feignclient 配置
   hystrix.enabled: true  # default false
+  client:  # FeignClientProperties
+    default-to-properties: true # default true (这儿文件中的配置将覆盖configuration中的配置(即子容器FeignContext中的配置))
+    config: # FeignClientConfiguration
+      default:  # like @EnableFeignClients(defaultConfiguration=? )
+        connectTimeout: 5000
+      feignName:  # like @FeignClient(value = "userserver", configuration=??)
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: full
 
 # Server HTTP port.
 server:
