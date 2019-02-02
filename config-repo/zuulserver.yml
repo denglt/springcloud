@@ -12,6 +12,14 @@ ribbon:  # 默认配置(所有服务)
   retryableStatusCodes: 404,502,500
   eager-load.enabled: true  # RibbonEagerLoadProperties
 
+userserver:
+  ribbon:
+    retryableStatusCodes: 404,502,500
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
+
 zuul:  # ZuulProperties
   ignoredServices: "*"
   addProxyHeaders: true # default false
@@ -25,6 +33,17 @@ zuul:  # ZuulProperties
       path: /demoserver/**
       stripPrefix: false
       retryable: true
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+    userserver:
+      execution:
+        isolation:
+          tread:
+            timeoutInMilliseconds: 1000
 
 # Actuator 监控
 management:

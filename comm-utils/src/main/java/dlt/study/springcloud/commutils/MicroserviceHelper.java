@@ -17,8 +17,6 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class MicroserviceHelper {
 
-    // @Autowired
-    // @Qualifier("cloudRestTemplate")
     private RestTemplate restTemplate;
 
     /**

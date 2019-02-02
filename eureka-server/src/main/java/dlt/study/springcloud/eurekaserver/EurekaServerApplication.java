@@ -1,4 +1,4 @@
-package com.study.springcloud.eurekaserver;
+package dlt.study.springcloud.eurekaserver;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;

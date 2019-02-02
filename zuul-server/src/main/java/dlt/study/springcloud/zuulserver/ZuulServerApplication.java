@@ -15,7 +15,9 @@ import org.springframework.context.annotation.ComponentScan;
  *            内部会创建一个ZuulServlet
  *            ZuulController的处理请求实际会转到ZuulServlet执行
  *    1.3  create ZuulHandlerMapping  (该 HandlerMapping 将会被 DispatcherServlet 处理)
- *    1.4 create ZuulServlet (通过 ServletRegistrationBean 加入WebServer)
+ *            自动注入（SimpleRouteLocator，ZuulController）
+ *
+ *    1.4 create ZuulServlet (通过 ServletRegistrationBean 加入WebServer ， 这儿的ZuulServer 与ZuulController中的是两个不同的实例)
  *     配置 Filter （Filter处理器：FilterProcessor ）
  *       pre filters: ServletDetectionFilter\FormBodyWrapperFilter\DebugFilter
  *       Post filters: SendResponseFilter (返回代理的Response。 writes responses from proxied requests to the current response)

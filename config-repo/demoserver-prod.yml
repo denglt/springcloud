@@ -1,4 +1,8 @@
 # 负载均衡自动配置  LoadBalancerAutoConfiguration
+author.name: denglt2  # /actuator/refresh 指令触发重新从配置中心读取配置信息
+
+spring.cloud.bus:  # BusProperties
+               id:      #  Service ID Must Be Unique
 
 #远程服务配置重试配置： RibbonAutoConfiguration  RibbonClientConfiguration
 userserver:  # 服务名称

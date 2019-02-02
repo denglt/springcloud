@@ -14,7 +14,7 @@ public class LogApplicationEvent implements ApplicationListener<ApplicationEvent
 
     @Override
     public void onApplicationEvent(ApplicationEvent event) {
-        logger.info("ApplicationEvent -> " + event.toString());
+       // logger.info("ApplicationEvent -> " + event.toString());
         if (event instanceof ContextRefreshedEvent) {
             logger.info("spring容易初始化完毕================================================888");
         }

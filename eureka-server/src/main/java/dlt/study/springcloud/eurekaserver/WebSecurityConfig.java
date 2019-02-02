@@ -1,4 +1,4 @@
-package com.study.springcloud.eurekaserver;
+package dlt.study.springcloud.eurekaserver;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -15,10 +15,13 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
  * @Copyright: 版权归 HSYUNTAI 所有
  */
 
-@Configuration
-@EnableWebSecurity(debug = true)
+//@Configuration
+//@EnableWebSecurity(debug = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+    public WebSecurityConfig(){
+        System.out.println("new WebSecurityConfig");
+    }
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()

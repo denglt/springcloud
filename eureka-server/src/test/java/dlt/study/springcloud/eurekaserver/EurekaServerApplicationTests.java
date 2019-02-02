@@ -1,4 +1,4 @@
-package com.study.springcloud.eurekaserver;
+package dlt.study.springcloud.eurekaserver;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
