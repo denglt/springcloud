@@ -1,6 +1,5 @@
-package dlt.study.springcloud.demoserver;
+package dlt.study.springcloud.userserver;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -9,8 +8,5 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class UserServerApplicationTests {
 
-    @Test
-    public void contextLoads() {
-    }
 
 }

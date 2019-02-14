@@ -4,26 +4,20 @@ import com.google.common.collect.Maps;
 import dlt.study.springcloud.commutils.MyCreateFlag;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.SmartInitializingSingleton;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.client.RestTemplateCustomizer;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.core.annotation.Order;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
 /**
  * @Description:
- * @Package: dlt.study.springcloud.demoserver
+ * @Package: dlt.study.springcloud.userserver
  * @Author: denglt
  * @Date: 2018/11/22 8:35 PM
  * @Copyright: 版权归 HSYUNTAI 所有

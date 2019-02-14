@@ -31,7 +31,7 @@ import java.util.Map;
  *          type: "org.springframework.cloud.openfeign.FeignAutoConfiguration$$EnhancerBySpringCGLIB$$9b507051",
  *          resource: null,
  *          dependencies: [
- *              "default.dlt.study.springcloud.demoserver.DemoServerApplication.FeignClientSpecification", // @EnableFeignClients.defaultConfiguration
+ *              "default.DemoServerApplication.FeignClientSpecification", // @EnableFeignClients.defaultConfiguration
  *              "userserver.FeignClientSpecification"
  *          ]
  *      }

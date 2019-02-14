@@ -14,6 +14,29 @@ spring:
     # - insecure
     - secure
     - eureka-secure
+  cloud:
+    stream:  # BindingServiceProperties
+      bindings:  # BindingProperties
+        input:
+          binder: kafka1
+          contentType: application/json
+          destination: userTopic
+          group:  denglt-userservice-1
+          #group: denglt.01d6464d-86c3-4d41-b496-92e1adbd70dd #anonymous.869011ac-ee01-4d71-bdaa-9aca0f9b2a9f
+          consumer: # ConsumerProperties
+            maxAttempts: 1  # default 3
+            concurrency: 1  # default 1  (可以设置为partition数量)
+        output:
+          binder: kafka2
+          contentType: application/json
+          destination: userTopic
+      binders: # BinderProperties
+        kafka1:
+          type: kafka # kafka: org.springframework.cloud.stream.binder.kafka.config.KafkaBinderConfiguration
+
+        kafka2:
+          type: kafka
+
 
 # Actuator 监控
 management:

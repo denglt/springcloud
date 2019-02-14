@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * @Description:
- * @Package: dlt.study.springcloud.demoserver
+ * @Package: dlt.study.springcloud.userserver
  * @Author: denglt
  * @Date: 2018/12/3 10:16 AM
  * @Copyright: 版权归 HSYUNTAI 所有
