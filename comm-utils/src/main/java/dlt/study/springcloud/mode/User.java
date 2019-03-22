@@ -15,6 +15,9 @@ public class User implements Serializable {
 
     }
 
+    public User(byte[] bs){
+
+    }
 
     public User(String userName) {
         this.name = userName;

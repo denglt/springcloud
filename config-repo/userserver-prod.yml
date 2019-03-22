@@ -16,6 +16,7 @@ spring:
     - eureka-secure
   cloud:
     stream:  # BindingServiceProperties
+     # default-binder: kafka1
       bindings:  # BindingProperties
         input:
           binder: kafka1
@@ -31,11 +32,21 @@ spring:
           contentType: application/json
           destination: userTopic
       binders: # BinderProperties
-        kafka1:
-          type: kafka # kafka: org.springframework.cloud.stream.binder.kafka.config.KafkaBinderConfiguration
+        kafka1:   #kafka: org.springframework.cloud.stream.binder.kafka.config.KafkaBinderConfiguration #
+          type: kafka # META-INF/spring.binders
+          environment:
+            spring:  #KafkaProperties
+              kafka:
+                client-id: denglt-1
+                bootstrap-servers: 127.0.0.1:9092
 
         kafka2:
           type: kafka
+          environment:
+            spring:
+              kafka:
+                client-id: denglt-2
+                bootstrap-servers: 127.0.0.1:9092
 
 
 # Actuator 监控
@@ -51,6 +62,9 @@ management:
     health:
       enabled: true
       show-details: always
+  health:
+    binders:
+      enabled: true
 
 #/info Endpoint
 info:

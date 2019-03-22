@@ -3,13 +3,19 @@ package dlt.study.springcloud.userserver;
 import dlt.study.springcloud.mode.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
+import org.springframework.cloud.stream.annotation.StreamMessageConverter;
+import org.springframework.cloud.stream.binding.BinderAwareChannelResolver;
 import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.cloud.stream.messaging.Sink;
+import org.springframework.context.annotation.Bean;
+import org.springframework.messaging.converter.MessageConverter;
 
 
 /**
+ * Spring Cloud Stream
  * @Description:
  * @Package: dlt.study.springcloud.userserver
  * @Author: denglt
@@ -22,6 +28,9 @@ public class StreamConfig {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+ //   @Autowired  // 动态获取target channel  可以放在Controller中
+ //   private BinderAwareChannelResolver resolver; //  resolver.resolveDestination(target)
+
     //@StreamListener(Sink.INPUT)
     public void processUserError(User user) {
         logger.info("processUser ->" + user);
@@ -31,11 +40,23 @@ public class StreamConfig {
 
     @StreamListener(Sink.INPUT)
     public void processUser(User user) {
-        logger.info("processUser ->" + user);
+        logger.info("consumer ->" + user);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
           //  e.printStackTrace();
         }
     }
+
+    /**
+     * 自定MessageConverter
+     * @return
+     */
+    @Bean
+    @StreamMessageConverter
+    public MessageConverter customMessageConverter() {
+        return new FastJson2MessageConverter();
+    }
 }
+
+
