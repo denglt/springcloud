@@ -51,19 +51,21 @@ public class FastJson2MessageConverter extends AbstractMessageConverter {
 
     @Override
     protected Object convertFromInternal(Message<?> message, Class<?> targetClass, Object conversionHint) {
-        logger.info("convertFromInternal -> {}",targetClass);
+
         Object payload = message.getPayload();
         if (payload instanceof byte[]) {
             String josnStr = new String((byte[]) payload, StandardCharsets.UTF_8);
+        //    logger.info("convertFromInternal -> {}",josnStr);
             return  JSON.parseObject(josnStr, targetClass);
         } else {
+        //    logger.info("convertFromInternal -> {}",payload.toString());
             return JSON.parseObject(payload.toString(),targetClass);
         }
     }
 
     @Override
     protected Object convertToInternal(Object payload, MessageHeaders headers, Object conversionHint) {
-        logger.info("convertToInternal -> {}" , payload);
+       // logger.info("convertToInternal -> {}" , payload);
         String jsonStr = JSON.toJSONString(payload);
         return jsonStr.getBytes(StandardCharsets.UTF_8);
     }

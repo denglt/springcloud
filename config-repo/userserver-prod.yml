@@ -1,12 +1,16 @@
 # Server HTTP port.
 server:
   servlet:
-    context-path: /userserver
+    context-path: /userserver  # 默认 /
     session:
       timeout:
   port: 8882
   address:
   connection-timeout: 10s
+
+spring.cloud.bus:  # BusProperties  # BusEnvironmentPostProcessor
+  id:      #  Service ID Must Be Unique
+  trace.enabled: true
 
 spring:
   profiles:
@@ -16,7 +20,7 @@ spring:
     - eureka-secure
   cloud:
     stream:  # BindingServiceProperties
-     # default-binder: kafka1
+      default-binder: kafka1
       bindings:  # BindingProperties
         input:
           binder: kafka1
@@ -31,6 +35,10 @@ spring:
           binder: kafka2
           contentType: application/json
           destination: userTopic
+
+          #springCloudBusInput:  # SpringCloudBusClient   for spring cloud bus
+          #springCloudBusOutput:
+
       binders: # BinderProperties
         kafka1:   #kafka: org.springframework.cloud.stream.binder.kafka.config.KafkaBinderConfiguration #
           type: kafka # META-INF/spring.binders
@@ -39,6 +47,8 @@ spring:
               kafka:
                 client-id: denglt-1
                 bootstrap-servers: 127.0.0.1:9092
+                consumer:
+                  auto-offset-reset: earliest
 
         kafka2:
           type: kafka
@@ -47,7 +57,16 @@ spring:
               kafka:
                 client-id: denglt-2
                 bootstrap-servers: 127.0.0.1:9092
+                consumer:
+                  auto-offset-reset: latest
 
+spring.sleuth:    # 仅把微服务的调用分布式跟踪和错误发送到zipkin server(自动完成，无需手动写log)，并不是把所有的程序中记录日志发到zipkin
+  sampler.probability: 1
+
+spring.zipkin:  # ZipkinProperties
+  base-url: http://127.0.0.1:9411/
+  discovery-client-enabled: false
+  # sender.type: web  # ZipkinSenderProperties
 
 # Actuator 监控
 management:

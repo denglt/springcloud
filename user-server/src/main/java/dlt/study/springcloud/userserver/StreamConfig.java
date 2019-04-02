@@ -3,11 +3,9 @@ package dlt.study.springcloud.userserver;
 import dlt.study.springcloud.mode.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.annotation.StreamMessageConverter;
-import org.springframework.cloud.stream.binding.BinderAwareChannelResolver;
 import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.cloud.stream.messaging.Sink;
 import org.springframework.context.annotation.Bean;
@@ -33,14 +31,14 @@ public class StreamConfig {
 
     //@StreamListener(Sink.INPUT)
     public void processUserError(User user) {
-        logger.info("processUser ->" + user);
+        logger.info("consumer ->" + user);
         if (user.getId().intValue() != 90) // (kafka) 虽然抛出了异常，但是CURRENT-OFFSET会设置为partition最后成功记录的offset+1
             throw new RuntimeException("throw error");
     }
 
     @StreamListener(Sink.INPUT)
     public void processUser(User user) {
-        logger.info("consumer ->" + user);
+       // logger.info("consumer ->" + user);
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
@@ -53,7 +51,7 @@ public class StreamConfig {
      * @return
      */
     @Bean
-    @StreamMessageConverter
+    @StreamMessageConverter  // @see ContentTypeConfiguration
     public MessageConverter customMessageConverter() {
         return new FastJson2MessageConverter();
     }

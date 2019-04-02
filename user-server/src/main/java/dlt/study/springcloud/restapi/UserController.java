@@ -3,6 +3,8 @@ package dlt.study.springcloud.restapi;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import dlt.study.springcloud.mode.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +27,7 @@ import java.util.Optional;
 @RestController
 public class UserController {
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
     private User EMPTY = new User();
     private List<User> users = Lists.newArrayList();
 
@@ -52,30 +55,39 @@ public class UserController {
     }
 
     @RequestMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public User get(@PathVariable("id") Integer userId , HttpServletResponse response) {
-        System.out.println("收到请求 -> get -> " + userId);
-        response.addHeader("autoor","denglt");
-        if (userId == 1)
+    public User get(@PathVariable("id") Integer userId, HttpServletResponse response) {
+        logger.info("UserController.get 收到请求 -> get -> " + userId);
+        response.addHeader("autoor", "denglt");
+        if (userId == 1) {
+           // logger.error("就是要报错");
             throw new RuntimeException("就是要报错！");
+        }
         Optional<User> user = users.stream().filter(u -> u.getId().equals(userId)).findFirst();
         return user.isPresent() ? user.get() : EMPTY;
     }
 
     @RequestMapping(value = "/find", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public User find(@RequestBody User dto) {
-        System.out.println("收到请求 -> find ->  " + dto.getName());
+        logger.info("UserController.find 收到请求 -> find ->  " + dto.getName());
         Optional<User> user = users.stream().filter(u -> u.getName().equals(dto.getName())).findFirst();
         return user.isPresent() ? user.get() : EMPTY;
     }
 
     @RequestMapping(value = "/new/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Map<String, Object> newUser(@PathVariable("id") Integer userId) {
-        System.out.println("收到请求 -> get -> " + userId);
+        logger.info("UserController.newUser 收到请求 -> get -> " + userId);
         Map<String, Object> user = Maps.newHashMap();
         user.put("userId", userId);
         user.put("name", "hello");
         user.put("age", 10);
         return user;
+    }
+
+
+    @RequestMapping(value = "/getnolog/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public User getnolog(@PathVariable("id") Integer userId) {
+        Optional<User> user = users.stream().filter(u -> u.getId().equals(userId)).findFirst();
+        return user.isPresent() ? user.get() : EMPTY;
     }
 
 }
