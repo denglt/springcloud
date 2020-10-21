@@ -16,7 +16,7 @@ public class LogApplicationEvent implements ApplicationListener<ApplicationEvent
     public void onApplicationEvent(ApplicationEvent event) {
        // logger.info("ApplicationEvent -> " + event.toString());
         if (event instanceof ContextRefreshedEvent) {
-            logger.info("spring容易初始化完毕================================================888");
+            logger.info("spring容器初始化完毕================================================888");
         }
     }
 }
