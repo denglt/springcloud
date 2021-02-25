@@ -7,6 +7,8 @@ import com.netflix.hystrix.HystrixCommandKey;
 import com.netflix.hystrix.HystrixCommandProperties;
 import dlt.study.springcloud.mode.User;
 import feign.Feign;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
 import feign.auth.BasicAuthRequestInterceptor;
 import feign.hystrix.FallbackFactory;
 import feign.hystrix.SetterFactory;
@@ -64,6 +66,18 @@ public class UserServiceFeignConfig {
         };
     }
 
+
+    /**
+     * 可以用来拦截请求
+     * @return
+     */
+    @Bean
+    public RequestInterceptor headerInterceptor() {
+        return requestTemplate -> {
+            // 小示例，没什么卵用
+            requestTemplate.header("Content-Type", "application/json");
+        };
+    }
     @Bean
     public feign.Logger.Level level() {
         return feign.Logger.Level.FULL;
